@@ -2,33 +2,35 @@
    CUSTOM STYLES FOR RYAN BOURKE
    ========================================================================== */
 
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+/* Import Google Fonts — Cormorant Garamond for that editorial/music-journal feel */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap');
 
-/* Override theme fonts */
+/* Override theme fonts — serif everywhere for a warm, minimal aesthetic */
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   font-weight: 400;
-  letter-spacing: -0.01em;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
 }
 
 h1, h2, h3, h4, h5, h6,
 .masthead__menu-item,
 .archive__item-title,
 .page__title {
-  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
-  font-weight: 500;
-  letter-spacing: -0.02em;
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  font-weight: 600;
+  letter-spacing: 0;
 }
 
-/* Marquee Banner Styles */
+/* Marquee Banner Styles — white bg, black text, slower */
 .marquee-container {
   width: 100%;
   overflow: hidden;
-  background: #111;
-  color: #fff;
-  padding: 0.6rem 0;
-  border-bottom: 1px solid #333;
+  background: #fff;
+  color: #000;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid #e0e0e0;
   position: relative;
   z-index: 20;
 }
@@ -36,17 +38,17 @@ h1, h2, h3, h4, h5, h6,
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee-scroll 20s linear infinite;
+  animation: marquee-scroll 45s linear infinite;
   white-space: nowrap;
 }
 
 .marquee-track span {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.85rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #f0f0f0;
+  color: #111;
   padding-right: 2rem;
 }
 
@@ -59,16 +61,45 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
-/* Reduce sidebar noise - hide author bio block on pages where not needed */
+/* Navigation: logo left, links right */
+.greedy-nav .visible-links {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.greedy-nav .visible-links li {
+  display: block;
+}
+
+.greedy-nav .visible-links li:first-child {
+  margin-right: auto;
+  font-weight: 700;
+}
+
+.greedy-nav .visible-links li:first-child a {
+  margin-left: 0;
+  font-size: 1.1rem;
+}
+
+.greedy-nav .visible-links li:not(:first-child) a {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Page content */
 .page__content {
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 1.15rem;
+  line-height: 1.6;
 }
 
 /* Clean up archive item titles */
 .archive__item-title {
   font-size: 1rem;
-  margin-top: 0.75em;
+  margin-top: 0.5em;
+  font-weight: 500;
 }
 
 .archive__item-title a {
@@ -76,16 +107,36 @@ h1, h2, h3, h4, h5, h6,
   color: inherit;
 }
 
-/* Album grid - make images square and clean */
+/* Album grid — fixed layout */
+.home-album-grid {
+  padding-top: 1em;
+}
+
+.home-album-grid .grid__wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5em;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hide excerpts/role text under album covers */
+.grid__item .archive__item-excerpt,
+.grid__item .page__meta {
+  display: none !important;
+}
+
+/* Square album covers */
 .archive__item-teaser {
   border-radius: 0;
   overflow: hidden;
   background: #f5f5f5;
+  aspect-ratio: 1 / 1;
 }
 
 .archive__item-teaser img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 100%;
   object-fit: cover;
   display: block;
   transition: transform 0.3s ease;
@@ -95,25 +146,22 @@ h1, h2, h3, h4, h5, h6,
   transform: scale(1.03);
 }
 
-/* Grid adjustments for album layout */
 .grid__item {
-  margin-bottom: 2em;
+  margin-bottom: 0;
 }
 
-.grid__item .archive__item-excerpt {
-  display: none !important;
+/* Responsive grid */
+@media (max-width: 768px) {
+  .home-album-grid .grid__wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+  }
 }
 
-/* Homepage specific */
-.home-album-grid {
-  padding-top: 1em;
-}
-
-.home-album-grid .grid__wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: -1em;
-  margin-right: -1em;
+@media (max-width: 480px) {
+  .home-album-grid .grid__wrapper {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Masthead minimal */
@@ -125,19 +173,12 @@ h1, h2, h3, h4, h5, h6,
   background: transparent;
 }
 
-.greedy-nav a {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-}
-
 /* Footer minimal */
 .page__footer {
   border-top: 1px solid #e8e8e8;
   background: #fafafa;
   color: #888;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
 }
 
 /* Credits list styling */
@@ -148,9 +189,9 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .credits-list li {
-  padding: 0.4em 0;
+  padding: 0.35em 0;
   border-bottom: 1px solid #eee;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .credits-list li:last-child {
@@ -181,15 +222,15 @@ h1, h2, h3, h4, h5, h6,
 
 .service-card h3 {
   margin-top: 0;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
 /* Contact page */
 .contact-email {
-  font-size: 1.5rem;
-  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.6rem;
+  font-family: 'Cormorant Garamond', serif;
   margin: 1em 0;
 }
 
@@ -231,7 +272,7 @@ h1, h2, h3, h4, h5, h6,
 .gear-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .gear-table th,
@@ -245,7 +286,27 @@ h1, h2, h3, h4, h5, h6,
 .gear-table th {
   font-weight: 600;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   letter-spacing: 0.05em;
   color: #666;
+}
+
+/* Override template max-height on album teasers to maintain square ratio */
+.home-album-grid .grid__item .archive__item-teaser {
+  max-height: none !important;
+}
+
+/* Clear any float behavior from Susy gallery mixin */
+.home-album-grid .grid__item {
+  float: none;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+}
+
+/* Fix grid wrapper to not interfere with CSS grid */
+.home-album-grid .grid__wrapper::before,
+.home-album-grid .grid__wrapper::after {
+  display: none;
 }
