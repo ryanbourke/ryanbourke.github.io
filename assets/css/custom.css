@@ -1,0 +1,251 @@
+/* ==========================================================================
+   CUSTOM STYLES FOR RYAN BOURKE
+   ========================================================================== */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* Override theme fonts */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+h1, h2, h3, h4, h5, h6,
+.masthead__menu-item,
+.archive__item-title,
+.page__title {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* Marquee Banner Styles */
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  background: #111;
+  color: #fff;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #333;
+  position: relative;
+  z-index: 20;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 20s linear infinite;
+  white-space: nowrap;
+}
+
+.marquee-track span {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f0f0f0;
+  padding-right: 2rem;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Reduce sidebar noise - hide author bio block on pages where not needed */
+.page__content {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Clean up archive item titles */
+.archive__item-title {
+  font-size: 1rem;
+  margin-top: 0.75em;
+}
+
+.archive__item-title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Album grid - make images square and clean */
+.archive__item-teaser {
+  border-radius: 0;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.archive__item-teaser img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.archive__item:hover .archive__item-teaser img {
+  transform: scale(1.03);
+}
+
+/* Grid adjustments for album layout */
+.grid__item {
+  margin-bottom: 2em;
+}
+
+.grid__item .archive__item-excerpt {
+  display: none !important;
+}
+
+/* Homepage specific */
+.home-album-grid {
+  padding-top: 1em;
+}
+
+.home-album-grid .grid__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -1em;
+  margin-right: -1em;
+}
+
+/* Masthead minimal */
+.masthead {
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.greedy-nav {
+  background: transparent;
+}
+
+.greedy-nav a {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Footer minimal */
+.page__footer {
+  border-top: 1px solid #e8e8e8;
+  background: #fafafa;
+  color: #888;
+  font-size: 0.8rem;
+}
+
+/* Credits list styling */
+.credits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.credits-list li {
+  padding: 0.4em 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+}
+
+.credits-list li:last-child {
+  border-bottom: none;
+}
+
+.credits-role {
+  color: #888;
+  font-size: 0.85em;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Services page */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2em;
+  margin-top: 2em;
+}
+
+.service-card {
+  padding: 1.5em;
+  border: 1px solid #e8e8e8;
+  background: #fafafa;
+}
+
+.service-card h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Contact page */
+.contact-email {
+  font-size: 1.5rem;
+  font-family: 'Space Grotesk', sans-serif;
+  margin: 1em 0;
+}
+
+.contact-email a {
+  text-decoration: none;
+  border-bottom: 2px solid #111;
+  color: #111;
+}
+
+/* About page images */
+.about-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1em;
+  margin: 2em 0;
+}
+
+.about-images img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+}
+
+/* Gear list */
+.gear-section {
+  margin-top: 3em;
+  padding-top: 2em;
+  border-top: 1px solid #e8e8e8;
+}
+
+.gear-section h2 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 1em;
+}
+
+.gear-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.gear-table th,
+.gear-table td {
+  padding: 0.5em 0.75em;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  font-weight: 400;
+}
+
+.gear-table th {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: #666;
+}
